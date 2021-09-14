@@ -7,6 +7,12 @@ class FavoritesScreen extends StatelessWidget {
 
   FavoritesScreen(this.favoriteMeals);
 
+
+
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
+
   @override
   Widget build(BuildContext context) {
     if (favoriteMeals.isEmpty) {

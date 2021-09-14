@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import '../models/category.dart';
 import '../models/meal.dart';
 
+
+//***************************************************************//
+//*************** CATEGORIES LIST *******************************//
+
 const DUMMY_CATEGORIES = const [
   Category(
     id: 'c1',
@@ -55,6 +59,11 @@ const DUMMY_CATEGORIES = const [
     color: Colors.teal,
   ),
 ];
+
+
+
+//***************************************************************//
+//*************** MEALS LIST ************************************//
 
 const DUMMY_MEALS = const [
   Meal(

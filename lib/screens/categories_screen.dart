@@ -4,6 +4,11 @@ import '../data/dummy_data.dart';
 import '../widgets/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
+
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
+  
   @override
   Widget build(BuildContext context) {
     return GridView(

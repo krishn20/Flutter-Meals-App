@@ -12,6 +12,11 @@ class CategoryItem extends StatelessWidget {
     this.color,
   );
 
+
+  //***************************************************************//
+  //*********************** Methods *******************************//
+
+  //Method for when a category is selected, then we redirect to CategoryMealsScreen.
   void selectCategory(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
       CategoryMealsScreen.routeName,
@@ -21,6 +26,12 @@ class CategoryItem extends StatelessWidget {
       },
     );
   }
+
+
+  
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +43,7 @@ class CategoryItem extends StatelessWidget {
         padding: EdgeInsets.all(15),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.bodyText1,
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(

@@ -20,6 +20,10 @@ class MealItem extends StatelessWidget {
     @required this.affordability,
   });
 
+
+  //***************************************************************//
+  //*********************** Methods *******************************//
+
   String get complexityText {
     switch (complexity) {
       case Complexity.Simple:
@@ -62,6 +66,12 @@ class MealItem extends StatelessWidget {
       }
     });
   }
+
+
+    
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +120,7 @@ class MealItem extends StatelessWidget {
                 ),
               ],
             ),
+            
             Padding(
               padding: EdgeInsets.all(20),
               child: Row(

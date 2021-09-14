@@ -18,10 +18,21 @@ class CategoryMealsScreen extends StatefulWidget {
 }
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
+  
   String categoryTitle;
   List<Meal> displayedMeals;
   var _loadedInitData = false;
 
+
+  //***************************************************************//
+  //********************** Methods ********************************//
+
+  //When InitStates have been loaded and initialized correctly, then this function is called.
+  //So basically when filters have been set, then only this function starts.
+
+  //Here we create a bool type 'loadedInitData ' variable. This if not set to true means that we have to get the
+  //passed args and set the available meals to be displayed according to the category selected (through args).
+  //After this we set it's value to true.
   @override
   void didChangeDependencies() {
     if (!_loadedInitData) {
@@ -30,6 +41,8 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
       final categoryId = routeArgs['id'];
       categoryTitle = routeArgs['title'];
 
+      //Here, we already got available meals according to the filters set. Now we also have to get only
+      //the meals that have the same category. This is what we do here.
       displayedMeals = widget.availableMeals.where((meal) {
         return meal.categories.contains(categoryId);
       }).toList();
@@ -38,11 +51,18 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     super.didChangeDependencies();
   }
 
+  //Not used.
   void _removeMeals(String mealId) {
     setState(() {
       displayedMeals.removeWhere((meal) => meal.id == mealId);
     });
   }
+
+
+  
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
 
   @override
   Widget build(BuildContext context) {

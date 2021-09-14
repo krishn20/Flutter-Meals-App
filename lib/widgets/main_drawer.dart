@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meals_app/screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
+
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
+
   @override
   Widget build(BuildContext context) {
 

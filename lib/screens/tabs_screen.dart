@@ -17,6 +17,10 @@ class _TabsScreenState extends State<TabsScreen> {
 
   List<Map<String, Object>> _pages;
 
+
+  //***************************************************************//
+  //******************** Methods **********************************//
+
   @override
   initState(){
     _pages  = [
@@ -40,14 +44,23 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
+
+  
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title']),
       ),
       drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]['page'],
+
+      //Setting up the Bottom Nav bar here, which also uses selectPage method to change state and thus the page displayed.
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         onTap: _selectPage,
@@ -98,4 +111,5 @@ class _TabsScreenState extends State<TabsScreen> {
 //      ),
 //    );
   }
+
 }

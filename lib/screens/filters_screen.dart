@@ -4,8 +4,9 @@ import 'package:flutter_meals_app/widgets/main_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters-screen';
+
+  final Map<String, bool> currentFilters; 
   final Function saveFilters;
-  final Map<String, bool> currentFilters;
 
   FiltersScreen(this.currentFilters, this.saveFilters);
 
@@ -14,10 +15,15 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
+  
   var _glutenFree = false;
   var _lactoseFree = false;
   var _vegan = false;
   var _vegetarian = false;
+
+
+  //***************************************************************//
+  //********************** Methods ********************************//
 
   @override
   initState() {
@@ -42,9 +48,17 @@ class _FiltersScreenState extends State<FiltersScreen> {
     );
   }
 
+
+
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //When we go on this FiltersScreen, we still need to give the same drawer on that screen as well.
+      //That's why it has been defined here and on the TabsScreen.
       drawer: MainDrawer(),
       appBar: AppBar(
         title: Text('Filters'),
@@ -62,18 +76,22 @@ class _FiltersScreenState extends State<FiltersScreen> {
               })
         ],
       ),
+      
       body: Column(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(20),
             child: Text(
               'Adjust your meal selection.',
-              style: Theme.of(context).textTheme.title,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ),
           Expanded(
             child: ListView(
               children: <Widget>[
+                //Here, we pass the fourth parameter as a nameless function with one param. This newValue is
+                //given to it by onChanged in _buildSwitchListTile.
+                //Based on this, we set the state and set it into the respective filter.
                 _buildSwitchListTile('Gluten-Free',
                     'Only include Gluten-Free Meals.', _glutenFree, (newValue) {
                   setState(() {
@@ -107,7 +125,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
           RaisedButton(
             child: Text(
               'Set Filters',
-              style: Theme.of(context).textTheme.subtitle,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
             padding: EdgeInsets.all(10),
             color: Theme.of(context).accentColor,

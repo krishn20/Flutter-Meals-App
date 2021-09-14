@@ -9,16 +9,22 @@ class MealDetailScreen extends StatelessWidget {
 
   MealDetailScreen(this.toggleFavorites, this.isFavorite);
 
+
+  //***************************************************************//
+  //********************* Methods *********************************//
+
+  //Helper widget function for making the Section Title, as we make it multiple times.
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.title,
+        style: Theme.of(context).textTheme.bodyText1,
       ),
     );
   }
 
+  //Helper widget function for making container, as we make it multiple times.
   Widget buildContainer(BuildContext context, child) {
     return Container(
       decoration: BoxDecoration(
@@ -34,6 +40,12 @@ class MealDetailScreen extends StatelessWidget {
     );
   }
 
+
+  
+  //***************************************************************//
+  //******************** Widgets Build ****************************//
+  //***************************************************************//
+
   @override
   Widget build(BuildContext context) {
     final mealId = ModalRoute.of(context).settings.arguments as String;
@@ -46,6 +58,8 @@ class MealDetailScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+
+            //1. Image Display
             Container(
               height: 300,
               width: double.infinity,
@@ -54,6 +68,8 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
+
+            //2. Ingredients Display
             buildSectionTitle(context, 'Ingredients'),
             buildContainer(
               context,
@@ -68,6 +84,8 @@ class MealDetailScreen extends StatelessWidget {
                 itemCount: selectedMeal.ingredients.length,
               ),
             ),
+
+            //3. Steps Display.
             buildSectionTitle(context, 'Steps'),
             buildContainer(
               context,
@@ -91,6 +109,8 @@ class MealDetailScreen extends StatelessWidget {
           ],
         ),
       ),
+
+      //FAB for favorites.
       floatingActionButton: FloatingActionButton(
         onPressed: () => toggleFavorites(mealId),
         child: Icon(
